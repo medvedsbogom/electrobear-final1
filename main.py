@@ -1,6 +1,7 @@
 # -*- coding: utf-8 -*-
 from fastapi import FastAPI
 from fastapi.middleware.cors import CORSMiddleware
+import os
 import requests
 import uuid
 
@@ -14,7 +15,7 @@ app.add_middleware(
     allow_headers=["*"],
 )
 
-AUTH_KEY = "MDE5ZDlmNTYtYmY4OS03NGQyLWJkMmQtYTc4Y2M5MDA4NmY2Ojg5NTdhMWQ0LTI1MjktNGM3ZC1iMmEyLWYzZDljYmQ1MzkzMA=="
+AUTH_KEY = os.environ["GIGACHAT_AUTH_KEY"]
 
 @app.post("/ask")
 async def ask(request: dict):
